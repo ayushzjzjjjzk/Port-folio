@@ -3,7 +3,7 @@ import React from 'react'
 const page = () => {
   return (
     <div>
-      <h1>starting the project  </h1>
+      <h1>Portfolio Page</h1>
     </div>
   )
 }
