@@ -1,11 +1,5 @@
-import React from 'react'
+import { redirect } from "next/navigation";
 
-const page = () => {
-  return (
-    <div>
-      <h1>starting the project  </h1>
-    </div>
-  )
+export default function Home() {
+  redirect("/portfolio");
 }
-
-export default page
