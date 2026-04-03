@@ -14,7 +14,7 @@ export const projects: Project[ ] = [
         videoUrl: "/videos/projects/logical-and-reasoning.mp4",
     },
     {
-        id: 'mathX',
+        id: 'mathx',
         title: 'MathX',
         description: 'A platform for interactive math learning with real-time problem solving and personalized feedback.',
         techStack: ['Next.js', 'TypeScript', 'Tailwind', 'Prisma', 'MongoDB'],
