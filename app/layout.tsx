@@ -19,7 +19,7 @@ const dancingScript = Dancing_Script({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://port-folio.vercel.app"), // ✅ REQUIRED FIX
+  metadataBase: new URL("https://port-folio.vercel.app"),
 
   title: {
     default: "Ayush Ramola",
@@ -44,11 +44,10 @@ export const metadata: Metadata = {
     description: "Explore my space or visit my portfolio",
     type: "website",
     url: "/",
-    siteName: "Ayush Ramola", // ✅ fixed typo
-
+    siteName: "Ayush Ramola",
     images: [
       {
-        url: "/og-image.png", // ✅ works now because metadataBase is set
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "Ayush Ramola - Portfolio",
@@ -58,7 +57,7 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Ayush Ramola", // ✅ consistent naming
+    title: "Ayush Ramola",
     description: "Explore my space or visit my portfolio",
     images: ["/og-image.png"],
   },
@@ -74,12 +73,7 @@ export default function RootLayout({
       <body
         className={`${geistMono.variable} ${dancingScript.variable} antialiased`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <ThemeProvider>
           {children}
           <ClientCursorProvider />
         </ThemeProvider>
