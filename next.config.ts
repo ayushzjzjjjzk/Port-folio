@@ -1,8 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  turbopack: {
-    root: "E:/port-folio", // your actual project folder
-  },
+  images: {
+    domains: [
+      'images.unsplash.com',
+      'res.cloudinary.com',
+      'raw.githubusercontent.com',git 
 };
 
 module.exports = nextConfig;
