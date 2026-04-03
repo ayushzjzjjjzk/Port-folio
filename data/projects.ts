@@ -14,7 +14,7 @@ export const projects: Project[ ] = [
         videoUrl: "/videos/projects/logical-and-reasoning.mp4",
     },
     {
-        id: 'MathX',
+        id: 'mathX',
         title: 'MathX',
         description: 'A platform for interactive math learning with real-time problem solving and personalized feedback.',
         techStack: ['Next.js', 'TypeScript', 'Tailwind', 'Prisma', 'MongoDB'],
@@ -25,7 +25,7 @@ export const projects: Project[ ] = [
         postUrl: '', // ✅ FIXED (added missing postUrl)
         videoUrl: '/videos/projects/mathx.mp4',
     },  {
-        id: 'MovieVerse',
+        id: 'movieVerse',
         title: 'MovieVerse',
         description: 'A movie discovery app that provides personalized recommendations, detailed information, and user reviews for a vast collection of films.',
         techStack: ['Next.js', 'TypeScript', 'Tailwind', 'Leaflet'],
