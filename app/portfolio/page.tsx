@@ -149,7 +149,7 @@ export default function PortfolioPage() {
 
                             <div className="text-theme-secondary text-sm leading-relaxed mb-8">
                                 <p className="mb-3">basically, i just like building things. a lot. currently learning Typescript and diving deep into backend systems and networking.</p>
-                                <p>in my free time, i like to write blogs, read, solve algorithms and cricket.</p>
+                                <p>in my free time, i like to write blogs, read, solve algorithms and play cricket.</p>
                             </div>
 
                             <div className="flex flex-wrap items-center gap-4 sm:gap-5 text-theme-muted">
