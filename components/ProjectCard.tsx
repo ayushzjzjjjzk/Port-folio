@@ -5,11 +5,12 @@ export interface Project {
   title: string;
   description: string;
   techStack: string[];
-  status: 'Live' | 'In Progress' | 'Open Source'; // ✅ FIXED (consistent)
+  status: 'Live' | 'In Progress' | 'Open Source';
   githubUrl: string;
   liveUrl?: string;
-  image?: string; // ✅ FIXED (was imageUrl)
-  postUrl?: string; // ✅ FIXED (camelCase consistent)
+  image?: string;
+  postUrl?: string;
+  videoUrl?: string;
 }
 
 interface ProjectCardProps {
@@ -33,24 +34,21 @@ const statusStyles = {
 };
 
 export default function ProjectCard({ project, compact = false }: ProjectCardProps) {
-  
-  // ✅ SAFE FALLBACK
+
   const statusStyle = statusStyles[project.status] || {
     bg: 'bg-gray-500',
     pulse: false,
   };
 
-  // ✅ CORRECT LINK (slug-based routing)
   const cardLink = `/portfolio/projects/${project.id}?from=${compact ? 'projects' : 'home'}`;
 
   return (
-    <a
+    
       href={cardLink}
       className="group block rounded-xl bg-theme-card border border-theme-card-border overflow-hidden hover:border-theme-card-hover-border hover:bg-theme-card-hover transition-all duration-300 hover:scale-[1.02] cursor-pointer"
     >
       <div className={`relative ${compact ? 'h-36' : 'h-40'} overflow-hidden`}>
 
-        {/* ✅ FIXED IMAGE */}
         {project.image ? (
           <img
             src={project.image}
@@ -63,7 +61,6 @@ export default function ProjectCard({ project, compact = false }: ProjectCardPro
           </div>
         )}
 
-        {/* ✅ STATUS BADGE */}
         <span
           className={`absolute top-3 right-3 text-xs px-2 py-1 ${statusStyle.bg} text-white rounded font-medium flex items-center gap-1`}
         >
