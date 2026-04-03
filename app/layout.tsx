@@ -19,7 +19,7 @@ const dancingScript = Dancing_Script({
 });
 
 export const metadata: Metadata = {
-  title: "knightkun",
+  title: "Ayush Ramola",
   description: "explore my space or visit my portfolio",
   keywords: ["developer", "portfolio", "3D", "interactive", "three.js", "react", "open source"],
   authors: [{ name: "Pranav Ray" }],
