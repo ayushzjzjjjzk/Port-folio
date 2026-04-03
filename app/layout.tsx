@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Ayush Ramola", // ✅ consistent naming
     description: "Explore my space or visit my portfolio",
-    images: ["/og-image.png"],
+    
   },
 };
 
