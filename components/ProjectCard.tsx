@@ -5,11 +5,11 @@ export interface Project {
   title: string;
   description: string;
   techStack: string[];
-  status: 'Live' | 'In progress' | 'Open source';
+  status: 'Live' | 'In Progress' | 'Open Source'; // ✅ FIXED (consistent)
   githubUrl: string;
   liveUrl?: string;
-  imageUrl?: string;
-  PostUrl?: string;
+  image?: string; // ✅ FIXED (was imageUrl)
+  postUrl?: string; // ✅ FIXED (camelCase consistent)
 }
 
 interface ProjectCardProps {
@@ -22,24 +22,25 @@ const statusStyles = {
     bg: 'bg-green-500/90',
     pulse: true,
   },
-  'In progress': {
-    bg: 'bg-blue-500/90',
-    pulse: false,
+  'In Progress': {
+    bg: 'bg-amber-500/90',
+    pulse: true,
   },
-  'Open source': { // ✅ FIXED (same as type)
-    bg: 'bg-purple-500/90',
+  'Open Source': {
+    bg: 'bg-violet-500/90',
     pulse: false,
   },
 };
 
 export default function ProjectCard({ project, compact = false }: ProjectCardProps) {
-
-  // ✅ SAFE FALLBACK (prevents crash forever)
+  
+  // ✅ SAFE FALLBACK
   const statusStyle = statusStyles[project.status] || {
     bg: 'bg-gray-500',
     pulse: false,
   };
 
+  // ✅ CORRECT LINK (slug-based routing)
   const cardLink = `/portfolio/projects/${project.id}?from=${compact ? 'projects' : 'home'}`;
 
   return (
@@ -49,9 +50,10 @@ export default function ProjectCard({ project, compact = false }: ProjectCardPro
     >
       <div className={`relative ${compact ? 'h-36' : 'h-40'} overflow-hidden`}>
 
-        {project.imageUrl ? ( // ✅ FIXED
+        {/* ✅ FIXED IMAGE */}
+        {project.image ? (
           <img
-            src={project.imageUrl}
+            src={project.image}
             alt={project.title}
             className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110"
           />
@@ -61,6 +63,7 @@ export default function ProjectCard({ project, compact = false }: ProjectCardPro
           </div>
         )}
 
+        {/* ✅ STATUS BADGE */}
         <span
           className={`absolute top-3 right-3 text-xs px-2 py-1 ${statusStyle.bg} text-white rounded font-medium flex items-center gap-1`}
         >

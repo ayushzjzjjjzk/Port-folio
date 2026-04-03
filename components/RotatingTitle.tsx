@@ -4,9 +4,11 @@ import { useEffect, useState } from 'react';
 
 const titles = [
     'fullstack dev',
-    'ios dev',
+    'tech enthusiast',
+    'Learner',
     'open source contributor',
-    'pursuing cs (and greatness)',
+    'Learn in public '
+    
 ];
 
 export default function RotatingTitle() {

@@ -1,4 +1,6 @@
 'use client';
+import { FaJava } from 'react-icons/fa'; 
+
 
 import {
     SiBun,
@@ -25,7 +27,8 @@ import {
     SiShadcnui,
     SiSwift,
     SiTailwindcss,
-    SiTypescript
+    SiTypescript,
+    
 } from 'react-icons/si';
 
 const ZustandIcon = ({ className }: { className?: string }) => (
@@ -52,10 +55,8 @@ const skills = [
     { name: 'Node', icon: SiNodedotjs },
     { name: 'Bun', icon: SiBun },
     { name: 'PostgreSQL', icon: SiPostgresql },
-    { name: 'MongoDB', icon: SiMongodb },
-    { name: 'Redis', icon: SiRedis },
-    { name: 'Prisma', icon: SiPrisma },
-    { name: 'Zustand', icon: ZustandIcon },
+   
+  
     { name: 'Postman', icon: SiPostman },
     { name: 'Tailwind', icon: SiTailwindcss },
     { name: 'shadcn', icon: SiShadcnui },
@@ -63,16 +64,14 @@ const skills = [
     { name: 'GSAP', icon: SiGreensock },
     { name: 'JavaScript', icon: SiJavascript },
     { name: 'TypeScript', icon: SiTypescript },
-    { name: 'Python', icon: SiPython },
-    { name: 'Swift', icon: SiSwift },
-    { name: 'C/C++', icon: SiCplusplus },
+  
+   
     { name: 'SQL', icon: SiMysql },
     { name: 'Git', icon: SiGit },
     { name: 'GitHub', icon: SiGithub },
-    { name: 'Figma', icon: SiFigma },
-    { name: 'Docker', icon: SiDocker },
-    { name: 'Convex', icon: ConvexIcon },
-    { name: 'Leaflet', icon: SiLeaflet },
+    
+    { name: 'Java', icon: FaJava },
+    
 ];
 
 export default function SkillBadges() {
