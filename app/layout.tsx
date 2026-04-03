@@ -19,29 +19,47 @@ const dancingScript = Dancing_Script({
 });
 
 export const metadata: Metadata = {
-  title: "Ayush Ramola",
-  description: "explore my space or visit my portfolio",
-  keywords: ["developer", "portfolio", "3D", "interactive", "three.js", "react", "open source"],
-  authors: [{ name: "Pranav Ray" }],
+  metadataBase: new URL("https://port-folio.vercel.app"), // ✅ REQUIRED FIX
+
+  title: {
+    default: "Ayush Ramola",
+    template: "%s | Ayush Ramola",
+  },
+
+  description: "Explore my space or visit my portfolio",
+  keywords: [
+    "developer",
+    "portfolio",
+    "3D",
+    "interactive",
+    "three.js",
+    "react",
+    "open source",
+  ],
+
+  authors: [{ name: "Ayush Ramola" }],
+
   openGraph: {
-    title: "knightkun",
-    description: "explore my space or visit my portfolio",
+    title: "Ayush Ramola",
+    description: "Explore my space or visit my portfolio",
     type: "website",
-    url: "https://knightkun.codes",
-    siteName: "knightkun",
+    url: "/",
+    siteName: "Ayush Ramola", // ✅ fixed typo
+
     images: [
       {
-        url: "/og-image.png",
+        url: "/og-image.png", // ✅ works now because metadataBase is set
         width: 1200,
         height: 630,
-        alt: "knightkun - personal space",
+        alt: "Ayush Ramola - Portfolio",
       },
     ],
   },
+
   twitter: {
     card: "summary_large_image",
-    title: "knightkun",
-    description: "explore my space or visit my portfolio",
+    title: "Ayush Ramola", // ✅ consistent naming
+    description: "Explore my space or visit my portfolio",
     images: ["/og-image.png"],
   },
 };
@@ -53,8 +71,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistMono.variable} ${dancingScript.variable} antialiased`}>
-        
+      <body
+        className={`${geistMono.variable} ${dancingScript.variable} antialiased`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -64,7 +83,6 @@ export default function RootLayout({
           {children}
           <ClientCursorProvider />
         </ThemeProvider>
-
       </body>
     </html>
   );
