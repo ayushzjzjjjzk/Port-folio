@@ -79,10 +79,10 @@ export default function RootLayout({
           <ClientCursorProvider />
         </ThemeProvider>
 
-        {/* 🔥 Umami Analytics */}
+        {/* 🔥 Umami Analytics (FINAL FIXED) */}
         <Script
-          src={process.env.NEXT_PUBLIC_UMAMI_URL!}
-          data-website-id={process.env.NEXT_PUBLIC_UMAMI_ID!}
+          src={process.env.NEXT_PUBLIC_UMAMI_URL}
+          data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
           strategy="afterInteractive"
         />
       </body>
