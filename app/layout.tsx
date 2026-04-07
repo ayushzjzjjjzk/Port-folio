@@ -2,6 +2,7 @@ import ThemeProvider from "@/components/ThemeProvider";
 import ClientCursorProvider from "@/components/ClientCursorProvider";
 import type { Metadata } from "next";
 import { Dancing_Script, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const geistMono = Geist_Mono({
@@ -77,6 +78,13 @@ export default function RootLayout({
           {children}
           <ClientCursorProvider />
         </ThemeProvider>
+
+        {/* 🔥 Umami Analytics */}
+        <Script
+          src={process.env.NEXT_PUBLIC_UMAMI_URL!}
+          data-website-id={process.env.NEXT_PUBLIC_UMAMI_ID!}
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );

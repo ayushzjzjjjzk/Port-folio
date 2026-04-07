@@ -1,10 +1,9 @@
-/** @type {import('next').NextConfig} */
+import type { NextConfig } from "next";
+
 const nextConfig = {
-  images: {
-    domains: [
-      'images.unsplash.com',
-      'res.cloudinary.com',
-      'raw.githubusercontent.com',git 
+  turbopack: {
+    root: __dirname,
+  },
 };
 
-module.exports = nextConfig;
+export default nextConfig;
