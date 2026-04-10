@@ -21,9 +21,9 @@ export const projects: Project[ ] = [
         status: 'Live',
         githubUrl: 'https://github.com/ayushzjzjjjzk/MathX',
         liveUrl: 'https://math-x-rouge.vercel.app/',
-        image: '/videos/projects/mathx.png',
+        image: '/videos/projects/MathX.png',
         postUrl: '', // ✅ FIXED (added missing postUrl)
-        videoUrl: '/videos/projects/mathx.mp4',
+        videoUrl: '/videos/projects/MathX.mp4',
     },  {
         id: 'movieVerse',
         title: 'MovieVerse',
@@ -32,9 +32,9 @@ export const projects: Project[ ] = [
         status: 'Live',
         githubUrl: 'https://github.com/ayushzjzjjjzk/movie',
         liveUrl: 'https://movie-iota-inky.vercel.app/',
-        image: '/videos/projects/movieverse.png',
+        image: '/videos/projects/MovieVerse.png',
         postUrl: '',
-        videoUrl: '/videos/projects/movieverse.mp4',
+        videoUrl: '',
     },
 
       
