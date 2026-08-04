@@ -12,6 +12,7 @@ import ThemeToggle from '@/components/ThemeToggle';
 import VisitorCounter from '@/components/VisitorCounter';
 import { blogs } from '@/data/blogs';
 import { projects } from '@/data/projects';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
@@ -38,7 +39,7 @@ export default function PortfolioPage() {
 
     return (
         <SmoothScroll>
-            <div className="min-h-screen text-page-text overflow-y-auto overflow-x-hidden relative z-[2]" style={geistMonoFont}>
+            <div className="min-h-screen text-page-text overflow-y-auto overflow-x-hidden relative z-2" style={geistMonoFont}>
                 <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-700 ease-out" style={{ filter: isLoaded ? 'none' : 'blur(20px)', opacity: isLoaded ? 1 : 0 }}>
                     <div
                         className="flex items-center gap-8 px-6 py-3 rounded-xl"
@@ -60,10 +61,12 @@ export default function PortfolioPage() {
                                     }
                                 }}
                             >
-                                <img
+                                <Image
                                     src="/images/avatar.jpg"
                                     alt="Avatar"
-                                    className="w-8 h-8 min-w-[32px] min-h-[32px] rounded-sm object-cover cursor-pointer shrink-0"
+                                    width={32}
+                                    height={32}
+                                    className="w-8 h-8 min-w-8 min-h-8 rounded-sm object-cover cursor-pointer shrink-0"
                                 />
                             </Link>
                             {!scrolled && (
@@ -132,9 +135,11 @@ export default function PortfolioPage() {
                                 <div className="absolute top-0 right-0 z-10">
                                     <VisitorCounter />
                                 </div>
-                                <img
+                                <Image
                                     src="/images/avatar.jpg"
                                     alt="Avatar"
+                                    width={96}
+                                    height={96}
                                     className="w-24 h-24 rounded-sm object-cover shrink-0 mt-1"
                                     style={{ boxShadow: 'var(--theme-avatar-shadow)' }}
                                 />

@@ -36,6 +36,20 @@ export const projects: Project[ ] = [
         postUrl: '',
         videoUrl: '',
     },
+    {
+        id: 'DSA-TIMELINE',
+        title: 'DSA-BUDDY',
+        description: 'A platform for practicing data structures and algorithms with interactive problems and detailed explanations.',
+        techStack: ['Next.js', 'TypeScript', 'Tailwind', 'Leaflet'],
+        status: 'Live',
+        githubUrl: 'https://github.com/ayushzjzjjjzk/DSA-Timeline',
+        liveUrl: 'https://dsa-timeline.vercel.app/',
+        image: '/videos/projects/Dsa-buddy.png',
+        postUrl: '',
+        videoUrl: '/videos/projects/DSA-buddy.mp4',
+    }
+
+   
 
       
 
