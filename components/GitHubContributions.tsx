@@ -72,11 +72,13 @@ export default function GitHubContributions({ username }: GitHubContributionsPro
                     }
 
                     setContributions(weeks);
-                    const apiTotal = data.total?.['2025'] || data.total?.['2026'] || data.total?.lastYear || calculatedTotal;
+                    const currentYearStr = new Date().getFullYear().toString();
+                    const lastYearStr = (new Date().getFullYear() - 1).toString();
+                    const apiTotal = data.total?.[currentYearStr] || data.total?.[lastYearStr] || data.total?.lastYear || calculatedTotal;
                     setTotalContributions(apiTotal);
 
                     if (data.contributions.length > 0) {
-                        setYear(new Date(data.contributions[0].date).getFullYear());
+                        setYear(new Date(data.contributions[data.contributions.length - 1].date).getFullYear());
                     }
                 }
             } catch (error) {

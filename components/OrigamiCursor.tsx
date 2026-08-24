@@ -3,6 +3,44 @@
 import { motion, useAnimationFrame, useMotionValue, useScroll, useSpring, useTransform, useVelocity } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
+const CraneIcon = () => (
+    <div style={{ width: 48, height: 48, filter: 'drop-shadow(0px 8px 12px rgba(0,0,0,0.15))' }}>
+        <svg 
+            viewBox="0 0 100 100" 
+            xmlns="http://www.w3.org/2000/svg"
+            style={{ overflow: 'visible', width: '100%', height: '100%' }}
+        >
+            <motion.g
+                animate={{ y: [0, -8, 0], rotate: [0, 3, 0] }}
+                transition={{ duration: 3, ease: 'easeInOut', repeat: Infinity }}
+                style={{ originX: "50px", originY: "50px" }}
+            >
+                <motion.g
+                    animate={{ rotate: [12, -18, 12] }}
+                    transition={{ duration: 1.2, ease: 'easeInOut', repeat: Infinity }}
+                    style={{ originX: "50px", originY: "50px" }}
+                >
+                    <polygon points="45,50 55,50 30,5" fill="#E2E2E2" stroke="#D0D0D0" strokeWidth="0.5" strokeLinejoin="round" />
+                </motion.g>
+                <polygon points="35,55 45,50 55,75" fill="#EEEEEE" stroke="#D0D0D0" strokeWidth="0.5" strokeLinejoin="round" />
+                <polygon points="35,55 45,50 10,30" fill="#FAFAFA" stroke="#D0D0D0" strokeWidth="0.5" strokeLinejoin="round" />
+                <polygon points="55,50 75,55 55,75" fill="#E8E8E8" stroke="#D0D0D0" strokeWidth="0.5" strokeLinejoin="round" />
+                <polygon points="45,50 55,50 55,75" fill="#FFFFFF" stroke="#D0D0D0" strokeWidth="0.5" strokeLinejoin="round" />
+                <polygon points="55,50 65,40 85,20" fill="#FFFFFF" stroke="#D0D0D0" strokeWidth="0.5" strokeLinejoin="round" />
+                <polygon points="65,40 75,55 85,20" fill="#E0E0E0" stroke="#D0D0D0" strokeWidth="0.5" strokeLinejoin="round" />
+                <polygon points="85,20 80,26 95,30" fill="#EAEAEA" stroke="#D0D0D0" strokeWidth="0.5" strokeLinejoin="round" />
+                <motion.g
+                    animate={{ rotate: [-15, 18, -15] }}
+                    transition={{ duration: 1.2, ease: 'easeInOut', repeat: Infinity }}
+                    style={{ originX: "50px", originY: "50px" }}
+                >
+                    <polygon points="45,50 55,50 15,80" fill="#F9F9F9" stroke="#D0D0D0" strokeWidth="0.5" strokeLinejoin="round" />
+                </motion.g>
+            </motion.g>
+        </svg>
+    </div>
+);
+
 export default function OrigamiCursor() {
     const [isMobile, setIsMobile] = useState(false);
     
@@ -77,44 +115,6 @@ export default function OrigamiCursor() {
             angle.set(angle.get() + (0 - angle.get()) * 0.05);
         }
     });
-
-    const CraneIcon = () => (
-        <div style={{ width: 48, height: 48, filter: 'drop-shadow(0px 8px 12px rgba(0,0,0,0.15))' }}>
-            <svg 
-                viewBox="0 0 100 100" 
-                xmlns="http://www.w3.org/2000/svg"
-                style={{ overflow: 'visible', width: '100%', height: '100%' }}
-            >
-                <motion.g
-                    animate={{ y: [0, -8, 0], rotate: [0, 3, 0] }}
-                    transition={{ duration: 3, ease: 'easeInOut', repeat: Infinity }}
-                    style={{ originX: "50px", originY: "50px" }}
-                >
-                    <motion.g
-                        animate={{ rotate: [12, -18, 12] }}
-                        transition={{ duration: 1.2, ease: 'easeInOut', repeat: Infinity }}
-                        style={{ originX: "50px", originY: "50px" }}
-                    >
-                        <polygon points="45,50 55,50 30,5" fill="#E2E2E2" stroke="#D0D0D0" strokeWidth="0.5" strokeLinejoin="round" />
-                    </motion.g>
-                    <polygon points="35,55 45,50 55,75" fill="#EEEEEE" stroke="#D0D0D0" strokeWidth="0.5" strokeLinejoin="round" />
-                    <polygon points="35,55 45,50 10,30" fill="#FAFAFA" stroke="#D0D0D0" strokeWidth="0.5" strokeLinejoin="round" />
-                    <polygon points="55,50 75,55 55,75" fill="#E8E8E8" stroke="#D0D0D0" strokeWidth="0.5" strokeLinejoin="round" />
-                    <polygon points="45,50 55,50 55,75" fill="#FFFFFF" stroke="#D0D0D0" strokeWidth="0.5" strokeLinejoin="round" />
-                    <polygon points="55,50 65,40 85,20" fill="#FFFFFF" stroke="#D0D0D0" strokeWidth="0.5" strokeLinejoin="round" />
-                    <polygon points="65,40 75,55 85,20" fill="#E0E0E0" stroke="#D0D0D0" strokeWidth="0.5" strokeLinejoin="round" />
-                    <polygon points="85,20 80,26 95,30" fill="#EAEAEA" stroke="#D0D0D0" strokeWidth="0.5" strokeLinejoin="round" />
-                    <motion.g
-                        animate={{ rotate: [-15, 18, -15] }}
-                        transition={{ duration: 1.2, ease: 'easeInOut', repeat: Infinity }}
-                        style={{ originX: "50px", originY: "50px" }}
-                    >
-                        <polygon points="45,50 55,50 15,80" fill="#F9F9F9" stroke="#D0D0D0" strokeWidth="0.5" strokeLinejoin="round" />
-                    </motion.g>
-                </motion.g>
-            </svg>
-        </div>
-    );
 
     if (isMobile) {
         return (

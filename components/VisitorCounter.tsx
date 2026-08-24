@@ -30,8 +30,7 @@ export default function VisitorCounter() {
                         setViews(data.views);
                     }
                 }
-            } catch (error) {
-            }
+            } catch {}
         };
 
         recordView();

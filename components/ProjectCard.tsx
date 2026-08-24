@@ -55,6 +55,8 @@ export default function ProjectCard({ project, compact = false }: ProjectCardPro
             src={project.image}
             alt={project.title}
             fill
+            unoptimized={project.image?.startsWith('http')}
+            sizes="(max-width: 768px) 100vw, 33vw"
             className="object-cover object-top transition-transform duration-500 group-hover:scale-110"
           />
         ) : (

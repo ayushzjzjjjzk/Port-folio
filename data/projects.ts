@@ -1,17 +1,29 @@
-import {Project} from "@/components/ProjectCard"
+import { Project } from "@/components/ProjectCard";
 
-export const projects: Project[ ] = [
-        {
+export const projects: Project[] = [
+    {
+        id: 'hatch',
+        title: 'Hatch',
+        description: 'A startup showcase and discovery platform for founders to explore YC companies, track metrics, discover funding rounds, and connect with builders.',
+        techStack: ['Next.js', 'TypeScript', 'PostgreSQL', 'Prisma', 'Tailwind', 'shadcn'],
+        status: 'Live',
+        githubUrl: 'https://github.com/ayushzjzjjjzk/hatch',
+        liveUrl: 'https://hatch-jade.vercel.app/',
+        image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop',
+        postUrl: '',
+        videoUrl: '',
+    },
+    {
         id: 'logical-and-reasoning',
         title: 'Logical and Reasoning',
-        description: 'a place where you can practice logical and reasoning questions for competitive exams like CAT, GRE, etc.',
-        techStack: [ 'React', 'JavaScript', 'Tailwind', 'motion' ,'Framer Motion'],
+        description: 'A place where you can practice logical and reasoning questions for competitive exams like CAT, GRE, etc.',
+        techStack: ['React', 'JavaScript', 'Tailwind', 'Framer Motion'],
         status: 'Live',
         githubUrl: 'https://github.com/ayushzjzjjjzk/logical-and-reasoning',
         liveUrl: 'https://logical-and-reasoning.vercel.app/',
         image: '/videos/projects/logical-and-reasoning.png',
         postUrl: '',
-        videoUrl: "/videos/projects/logical-and-reasoning.mp4",
+        videoUrl: '/videos/projects/logical-and-reasoning.mp4',
     },
     {
         id: 'mathx',
@@ -21,38 +33,32 @@ export const projects: Project[ ] = [
         status: 'Live',
         githubUrl: 'https://github.com/ayushzjzjjjzk/MathX',
         liveUrl: 'https://math-x-rouge.vercel.app/',
-        image: '/videos/projects/MathX.png',
-        postUrl: '', // ✅ FIXED (added missing postUrl)
-        videoUrl: '/videos/projects/MathX.mp4',
-    },  {
-        id: 'movieVerse',
+        image: '/videos/projects/mathx.png',
+        postUrl: '',
+        videoUrl: '/videos/projects/mathx.mp4',
+    },
+    {
+        id: 'movieverse',
         title: 'MovieVerse',
         description: 'A movie discovery app that provides personalized recommendations, detailed information, and user reviews for a vast collection of films.',
         techStack: ['Next.js', 'TypeScript', 'Tailwind', 'Leaflet'],
         status: 'Live',
         githubUrl: 'https://github.com/ayushzjzjjjzk/movie',
         liveUrl: 'https://movie-iota-inky.vercel.app/',
-        image: '/videos/projects/MovieVerse.png',
+        image: '/videos/projects/movieverse.png',
         postUrl: '',
         videoUrl: '',
     },
     {
-        id: 'DSA-TIMELINE',
+        id: 'dsa-buddy',
         title: 'DSA-BUDDY',
         description: 'A platform for practicing data structures and algorithms with interactive problems and detailed explanations.',
-        techStack: ['Next.js', 'TypeScript', 'Tailwind', 'Leaflet'],
+        techStack: ['Next.js', 'TypeScript', 'Tailwind', 'Framer Motion'],
         status: 'Live',
         githubUrl: 'https://github.com/ayushzjzjjjzk/DSA-Timeline',
         liveUrl: 'https://dsa-timeline.vercel.app/',
         image: '/videos/projects/Dsa-buddy.png',
         postUrl: '',
         videoUrl: '/videos/projects/DSA-buddy.mp4',
-    }
-
-   
-
-      
-
-
-
-]
+    },
+];

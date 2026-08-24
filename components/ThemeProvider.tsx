@@ -19,19 +19,19 @@ export function useTheme() {
 }
 
 export default function ThemeProvider({ children }: { children: React.ReactNode }) {
-    const [theme, setTheme] = useState<Theme>('dark');
-    const [mounted, setMounted] = useState(false);
+    const [theme, setTheme] = useState<Theme>(() => {
+        if (typeof window !== 'undefined') {
+            const saved = localStorage.getItem('theme') as Theme | null;
+            if (saved === 'light' || saved === 'dark') return saved;
+        }
+        return 'dark';
+    });
     const overlayRef = useRef<HTMLDivElement>(null);
     const animatingRef = useRef(false);
 
     useEffect(() => {
-        const saved = localStorage.getItem('theme') as Theme | null;
-        if (saved === 'light' || saved === 'dark') {
-            setTheme(saved);
-            document.documentElement.classList.toggle('light', saved === 'light');
-        }
-        setMounted(true);
-    }, []);
+        document.documentElement.classList.toggle('light', theme === 'light');
+    }, [theme]);
 
     const toggleTheme = (x?: number, y?: number) => {
         if (animatingRef.current) return;
@@ -59,7 +59,7 @@ export default function ThemeProvider({ children }: { children: React.ReactNode 
         overlay.style.opacity = '1';
         overlay.style.clipPath = `circle(0px at ${x}px ${y}px)`;
         overlay.style.display = 'block';
-        overlay.offsetHeight;
+        void overlay.offsetHeight;
 
         const expandAnim = overlay.animate(
             [
@@ -99,10 +99,6 @@ export default function ThemeProvider({ children }: { children: React.ReactNode 
             animatingRef.current = false;
         };
     };
-
-    if (!mounted) {
-        return <>{children}</>;
-    }
 
     return (
         <ThemeContext.Provider value={{ theme, toggleTheme }}>

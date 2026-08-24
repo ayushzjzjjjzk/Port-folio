@@ -1,20 +1,27 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useSyncExternalStore } from 'react';
 import OrigamiCursor from './OrigamiCursor';
+
+const emptySubscribe = () => () => {};
 
 export default function ClientCursorProvider() {
     const pathname = usePathname();
-    const [shouldRender, setShouldRender] = useState(false);
+    const isClient = useSyncExternalStore(
+        emptySubscribe,
+        () => true,
+        () => false
+    );
 
-    useEffect(() => {
-        const isPortfolioSubdomain = window.location.hostname.startsWith('portfolio.');
-        const isPortfolioPath = pathname?.startsWith('/portfolio');
-        setShouldRender(isPortfolioSubdomain || !!isPortfolioPath);
-    }, [pathname]);
+    if (!isClient) {
+        return null;
+    }
 
-    if (!shouldRender) {
+    const isPortfolioSubdomain = typeof window !== 'undefined' && window.location.hostname.startsWith('portfolio.');
+    const isPortfolioPath = pathname?.startsWith('/portfolio');
+
+    if (!isPortfolioSubdomain && !isPortfolioPath) {
         return null;
     }
 

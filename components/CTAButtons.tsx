@@ -4,10 +4,10 @@ export default function CTAButtons() {
     return (
         <div className="flex items-center gap-5 mt-8">
             <a
-                href="/"
+                href="/resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-2.5 px-5 py-2.5 text-theme-badge-text hover:text-theme-primary transition-all duration-300 border border-theme-card-border hover:border-theme-card-hover-border rounded-xl hover:bg-theme-card"
+                className="group flex items-center gap-2.5 px-5 py-2.5 text-theme-badge-text hover:text-theme-primary transition-all duration-300 border border-theme-card-border hover:border-theme-card-hover-border rounded-xl hover:bg-theme-card cursor-pointer"
             >
                 <svg
                     className="w-4 h-4 transition-transform duration-300 group-hover:translate-y-0.5"
@@ -26,7 +26,7 @@ export default function CTAButtons() {
             </a>
 
             <a
-                href="mailto:ayushsinghramola02@gmail.com?subject=Let's work together!"
+                href="mailto:ayushsinghramola02@gmail.com?subject=Let's%20work%20together!"
                 className="group relative flex items-center gap-2.5 px-5 py-2.5 rounded-xl overflow-hidden transition-all duration-300 hover:scale-[1.03]"
                 style={{
                     background: 'var(--theme-nav-bg)',
