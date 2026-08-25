@@ -66,10 +66,15 @@ async function main() {
                     .filter(Boolean),
         },
         {
-            type: 'list',
+            type: 'select',
             name: 'platform',
             message: '🌐 Publishing Platform:',
-            choices: ['Internal', 'Medium', 'Dev.to', 'Substack'],
+            choices: [
+                { name: 'Internal (Published on this portfolio)', value: 'Internal' },
+                { name: 'Medium', value: 'Medium' },
+                { name: 'Dev.to', value: 'Dev.to' },
+                { name: 'Substack', value: 'Substack' },
+            ],
             default: 'Internal',
         },
         {
@@ -86,29 +91,16 @@ async function main() {
             default: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop',
         },
         {
-            type: 'editor',
-            name: 'content',
-            message: '✍️  Article Content (Markdown supported):',
-            default: `
-## Introduction
-
-Write your introduction here...
-
-## First Section
-
-Explain your thoughts, architectural decisions, and learnings...
-
-\`\`\`typescript
-// Code blocks will automatically get syntax highlighting and copy buttons!
-const greeting = "Hello, world!";
-console.log(greeting);
-\`\`\`
-
-## Conclusion
-
-Wrap up your key takeaways...
-            `.trim(),
-            validate: (input: string) => (input.trim() ? true : 'Content cannot be empty.'),
+            type: 'input',
+            name: 'initialSection',
+            message: '✍️  First Section Title (e.g. Overview / The Problem):',
+            default: 'The Problem with Conventional Learning',
+        },
+        {
+            type: 'input',
+            name: 'contentParagraph',
+            message: '📝 First Paragraph / Key Insight:',
+            default: 'Write your opening thoughts here...',
         },
     ]);
 
@@ -124,9 +116,32 @@ Wrap up your key takeaways...
         process.exit(1);
     }
 
+    const fullContent = `
+${answers.description}
+
+## ${answers.initialSection}
+
+${answers.contentParagraph}
+
+\`\`\`typescript
+// Code blocks will automatically get syntax highlighting and a "Copy" button:
+function helloWorld() {
+  console.log("Hello from ${answers.title}!");
+}
+\`\`\`
+
+## Key Takeaways
+
+- Summarize your first learning point
+- Summarize your second learning point
+- Connect with other engineers and builders
+
+> Every "## Heading" is automatically tracked in real-time by the floating reading progress pill at the bottom as readers scroll!
+    `.trim();
+
     const todayDate = formatDate(new Date());
-    const readTime = calculateReadTime(answers.content);
-    const escapedContent = escapeTemplateString(answers.content.trim());
+    const readTime = calculateReadTime(fullContent);
+    const escapedContent = escapeTemplateString(fullContent);
     const tagsArrayStr = JSON.stringify(answers.tags);
 
     const newBlogEntry = `    {
@@ -167,7 +182,8 @@ ${escapedContent}
     console.log(`🔗 Slug:      ${slug}`);
     console.log(`📅 Date:      ${todayDate}`);
     console.log(`⏱️  Read Time: ${readTime}`);
-    console.log(`🌐 Live URL:  http://localhost:3000/portfolio/blogs/${slug}\n`);
+    console.log(`🌐 Live URL:  http://localhost:3000/portfolio/blogs/${slug}`);
+    console.log(`\n💡 Tip: You can open data/blogs.ts at any time to expand or edit the full markdown content!\n`);
 }
 
 main().catch((err) => {
