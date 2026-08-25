@@ -16,7 +16,7 @@ export interface Blog {
 
 export const blogs: Blog[] = [
     {
-        id: 'how-to-fuck-around-and-find-out',
+      id: 'how-to-fuck-around-and-find-out',
         slug: 'how-to-fuck-around-and-find-out',
         title: 'How to Fuck Around and Find Out',
         description: 'A guide to the unconventional way of learning.',

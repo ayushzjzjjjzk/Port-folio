@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "new-blog": "tsx scripts/new-blog.ts"
   },
   "dependencies": {
     "framer-motion": "^12.38.0",
@@ -19,12 +20,15 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/inquirer": "^9.0.10",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.1",
+    "inquirer": "^14.1.0",
     "tailwindcss": "^4",
+    "tsx": "^4.23.12",
     "typescript": "^5"
   }
 }
