@@ -2,38 +2,66 @@
 
 import { useEffect, useRef, useState } from 'react';
 
+const SESSION_KEY = 'portfolioViewCounted';
+const COUNT_URL = '/api/visitors';
+const CURRENT_URL = '/api/visitors/current';
+const POLL_INTERVAL = 15000;
+
 export default function VisitorCounter() {
     const [views, setViews] = useState<number | null>(null);
-    const hasFetched = useRef(false);
+    const recordLock = useRef(false);
 
     useEffect(() => {
-        if (hasFetched.current) return;
-        hasFetched.current = true;
+        let cancelled = false;
+
+        const applyViews = (data: { views?: number }) => {
+            if (
+                !cancelled &&
+                typeof data.views === 'number' &&
+                data.views > 0
+            ) {
+                setViews(data.views);
+            }
+        };
 
         const recordView = async () => {
             try {
-                const hasVisited = sessionStorage.getItem('hasVisitedPortfolio');
-                
-                if (!hasVisited) {
-                    const res = await fetch('/api/views', { method: 'POST' });
+                const hasCounted = sessionStorage.getItem(SESSION_KEY);
+
+                if (!hasCounted && !recordLock.current) {
+                    recordLock.current = true;
+
+                    const res = await fetch(COUNT_URL, { cache: 'no-store' });
                     const data = await res.json();
-                    
-                    if (res.ok && data.views > 0) {
+
+                    if (res.ok && typeof data.views === 'number' && data.views > 0) {
                         setViews(data.views);
-                        sessionStorage.setItem('hasVisitedPortfolio', 'true');
+                        sessionStorage.setItem(SESSION_KEY, '1');
+                    } else {
+                        recordLock.current = false;
                     }
                 } else {
-                    const res = await fetch('/api/views', { method: 'GET' });
+                    const res = await fetch(CURRENT_URL, { cache: 'no-store' });
                     const data = await res.json();
-                    
-                    if (res.ok && data.views > 0) {
-                        setViews(data.views);
-                    }
+                    applyViews(data);
                 }
             } catch {}
         };
 
         recordView();
+
+        const interval = setInterval(async () => {
+            try {
+                const res = await fetch(CURRENT_URL, { cache: 'no-store' });
+                const data = await res.json();
+                applyViews(data);
+            } catch {}
+        }, POLL_INTERVAL);
+
+        return () => {
+            cancelled = true;
+            clearInterval(interval);
+        };
     }, []);
 
     const formatViews = (num: number) => {
