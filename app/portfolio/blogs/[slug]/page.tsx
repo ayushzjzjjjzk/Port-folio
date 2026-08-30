@@ -21,7 +21,14 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
 
     const [isLoaded, setIsLoaded] = useState(false);
     const [claps, setClaps] = useState(blog?.claps || 0);
-    const [hasClapped, setHasClapped] = useState(false);
+    const [hasClapped, setHasClapped] = useState(() => {
+        if (typeof window === 'undefined' || !blog) return false;
+        try {
+            return localStorage.getItem(`clapped:${blog.id}`) === '1';
+        } catch {
+            return false;
+        }
+    });
     const [linkCopied, setLinkCopied] = useState(false);
 
     useEffect(() => {
@@ -39,8 +46,12 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
     }
 
     const handleClap = () => {
+        if (hasClapped) return;
         setClaps((prev) => prev + 1);
         setHasClapped(true);
+        try {
+            localStorage.setItem(`clapped:${blog.id}`, '1');
+        } catch {}
     };
 
     const handleCopyLink = async () => {
@@ -151,10 +162,11 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
                             <div className="flex items-center gap-3">
                                 <button
                                     onClick={handleClap}
-                                    className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all cursor-pointer ${
+                                    disabled={hasClapped}
+                                    className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all ${
                                         hasClapped
-                                            ? 'bg-emerald-500/10 border-emerald-500/40 text-emerald-400 scale-105'
-                                            : 'bg-theme-badge-bg border-theme-divider text-theme-secondary hover:text-theme-primary hover:border-theme-card-hover-border'
+                                            ? 'bg-emerald-500/10 border-emerald-500/40 text-emerald-400 scale-105 cursor-not-allowed'
+                                            : 'bg-theme-badge-bg border-theme-divider text-theme-secondary hover:text-theme-primary hover:border-theme-card-hover-border cursor-pointer'
                                     }`}
                                 >
                                     <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
@@ -162,7 +174,11 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
                                     </svg>
                                     <span className="font-semibold text-xs">{claps} Claps</span>
                                 </button>
-                                <span className="text-xs text-theme-muted">Enjoyed this article? Give it a clap!</span>
+                                <span className="text-xs text-theme-muted">
+                                    {hasClapped
+                                        ? 'You clapped for this article!'
+                                        : 'Enjoyed this article? Give it a clap!'}
+                                </span>
                             </div>
 
                             {blog.externalUrl && (
