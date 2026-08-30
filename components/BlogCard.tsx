@@ -29,7 +29,9 @@ const platformIcons: Record<string, React.ReactNode> = {
 
 export default function BlogCard({ blog, onTagClick }: BlogCardProps) {
     const icon = blog.platform ? platformIcons[blog.platform] : null;
-    const destination = `/portfolio/blogs/${blog.slug || blog.id}`;
+    const isExternal = Boolean(blog.externalUrl);
+    const destination = blog.externalUrl || `/portfolio/blogs/${blog.slug || blog.id}`;
+    const linkProps = isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {};
 
     return (
         <div className="group rounded-xl border border-theme-card-border bg-theme-card hover:bg-theme-card-hover hover:border-theme-card-hover-border transition-all duration-300 hover:scale-[1.01] overflow-hidden flex flex-col sm:flex-row">
@@ -38,6 +40,7 @@ export default function BlogCard({ blog, onTagClick }: BlogCardProps) {
                 <Link
                     href={destination}
                     className="relative sm:w-48 h-36 sm:h-auto overflow-hidden shrink-0 block"
+                    {...linkProps}
                 >
                     <Image
                         src={blog.image}
@@ -76,7 +79,7 @@ export default function BlogCard({ blog, onTagClick }: BlogCardProps) {
                     </div>
 
                     {/* Title */}
-                    <Link href={destination} className="block">
+                    <Link href={destination} className="block" {...linkProps}>
                         <h3
                             className="text-theme-primary text-base font-semibold mb-2 group-hover:text-theme-icon-hover transition-colors leading-snug"
                             style={{ fontFamily: "var(--font-geist-mono), 'Geist Mono', monospace" }}
@@ -116,8 +119,13 @@ export default function BlogCard({ blog, onTagClick }: BlogCardProps) {
                     <Link
                         href={destination}
                         className="inline-flex items-center gap-1 text-xs text-theme-muted group-hover:text-theme-primary transition-colors font-medium ml-auto"
+                        {...linkProps}
                     >
-                        <span>Read Article</span>
+                        <span>
+                            {isExternal && blog.platform
+                                ? `Read on ${blog.platform}`
+                                : 'Read Article'}
+                        </span>
                         <svg
                             className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"
                             fill="none"

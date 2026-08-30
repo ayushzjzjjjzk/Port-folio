@@ -55,7 +55,7 @@ export default function Navbar({ isLoaded = true }: NavbarProps) {
                         className="hover:scale-105 transition-transform block shrink-0"
                     >
                         <Image
-                            src="/images/avatar.jpg"
+                            src="/images/avatar-v20260830202242.jpg"
                             alt="Avatar"
                             width={32}
                             height={32}

@@ -8,7 +8,15 @@
     "start": "next start",
     "lint": "eslint",
     "new-blog": "tsx scripts/new-blog.ts",
-    "delete-blog": "tsx scripts/delete-blog.ts"
+    "delete-blog": "tsx scripts/delete-blog.ts",
+    "set-avatar": "tsx scripts/set-avatar.ts",
+    "blog:new": "tsx scripts/blog.ts new",
+    "blog:open": "tsx scripts/blog.ts open",
+    "blog:publish": "tsx scripts/blog.ts publish",
+    "blog:preview": "tsx scripts/blog.ts preview",
+    "blog:img": "tsx scripts/blog.ts img",
+    "blog:list": "tsx scripts/blog.ts list",
+    "blog:help": "tsx scripts/blog.ts help"
   },
   "dependencies": {
     "framer-motion": "^12.38.0",

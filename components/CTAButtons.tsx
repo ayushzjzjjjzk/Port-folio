@@ -26,7 +26,7 @@ export default function CTAButtons() {
             </a>
 
             <a
-                href="mailto:ayushsinghramola02@gmail.com?subject=Let's%20work%20together!"
+                href="https://mail.google.com/mail/?view=cm&to=ayushsinghramola02@gmail.com&su=Let%27s+work+together%21"
                 className="group relative flex items-center gap-2.5 px-5 py-2.5 rounded-xl overflow-hidden transition-all duration-300 hover:scale-[1.03]"
                 style={{
                     background: 'var(--theme-nav-bg)',
